@@ -30,5 +30,59 @@ import { GET_SMURFS_START,
         ADD_SMURFS_FAILURE }
 from '../actions';
 
+const initialState = {
+  smurfs: [],
+  fetchingSmurfs: false,
+  addingSmurf: false,
+  updatingSmurf: false,
+  deletingSmurf: false,
+  error: null
+}
 
-const reducer 
+
+const reducer = (state = initialState, action) => {
+  switch(action.type) {
+    case GET_SMURFS_START:
+      return {
+        ...state,
+        fetchingSmurfs: true
+      };
+    case GET_SMURFS_SUCCESS:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        smurfs: action.payload
+      };
+    case GET_SMURFS_FAILURE:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        smurfs: [],
+        error: 'ERROR, SMURFS, ERROR, SMURFS, ERROR'
+      };
+    case ADD_SMURFS_START:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        addingSmurf: true,
+      };
+    case ADD_SMURFS_SUCCESS:
+      return {
+        ...state,
+        addingSmurf: false,
+        smurfs: action.payload
+      };
+    case ADD_SMURFS_FAILURE:
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        addingSmurf: false,
+        smurfs: [],
+        error: 'Cannot ADD SMURF'
+      };
+    default:
+      return state;
+  }
+}
+
+export default reducer;
