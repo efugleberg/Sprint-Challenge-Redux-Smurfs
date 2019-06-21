@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 import { getSmurfs } from '../actions';
+import SmurfForm from './SmurfForm';
 
 
 const Smurfs = props => {
@@ -28,8 +29,7 @@ const Smurfs = props => {
                 </div>
             ))}
 
-
-
+            <SmurfForm />
 
         </div>
     )
